@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string("username",100)->nullable(false);
+            $table->string("username", 100)->nullable(false)->unique("users_username_unique");
             $table->string("password",100)->nullable(false);
             $table->string("nama",100)->nullable(false);
             $table->string("email",100)->nullable(false);
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("kabupaten_kota",100)->nullable();
             $table->string("provinsi",100)->nullable();
             $table->string("role")->default("user");
+            $table->string("token",100)->nullable()->unique("users_token_unique");
             $table->timestamps();
         });
     }
