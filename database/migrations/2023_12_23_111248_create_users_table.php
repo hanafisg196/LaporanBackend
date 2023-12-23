@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string("password",100)->nullable(false);
             $table->string("nama",100)->nullable(false);
             $table->string("email",100)->nullable(false);
-            $table->string("posisi",100)->nullable(false);
-            $table->string("jabatan",100)->nullable(false);
-            $table->string("kecamatan",100)->nullable(false);
-            $table->string("kabupaten_kota",100)->nullable(false);
-            $table->string("provinsi",100)->nullable(false);
+            $table->string("posisi",100)->nullable();
+            $table->string("jabatan",100)->nullable();
+            $table->string("kecamatan",100)->nullable();
+            $table->string("kabupaten_kota",100)->nullable();
+            $table->string("provinsi",100)->nullable();
             $table->string("role")->default("user");
             $table->timestamps();
         });
