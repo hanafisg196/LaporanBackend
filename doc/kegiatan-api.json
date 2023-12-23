@@ -1,0 +1,496 @@
+{
+"openapi": "3.0.3",
+"info": {
+
+    "title": "API Laporan Kegiatan",
+    "description": "Kegiatan Api",
+    "version": "1.0",
+    "contact": {
+        "name": "Hanafis Gunawan",
+        "email": "hanafisg196@gmail.com"
+    },
+    "license": {
+        "name": "APACHE 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+},
+"servers": [
+    {
+        "url": "http://localhost:8000"
+    }
+],
+"paths": {
+    "/api/kegiatan":{
+        "post":{
+            "parameters": [
+                {
+                   "name": "Authorization",
+                   "in": "header"
+                }
+            ],
+            "tags": ["Kegiatan Page"],
+            "description": "Create New Kegiatan",
+            "requestBody":{
+                "content": {
+                    "application/json":{
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "nagari_kunjungan":{
+                                    "type":"string"
+                                },
+                                "kegiatan":{
+                                    "type":"string"
+                                },
+                                "hasil":{
+                                    "type":"string"
+                                },
+                                "langkah":{
+                                    "type":"string"
+                                },
+                                "rekomendasi":{
+                                    "type":"string"
+                                }
+                            }
+
+                        }
+                    }
+                }
+            },"responses": {
+                "200":{
+                    "description": "Success create Kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                            },"updated_at":{
+                                                "type": "string"
+                                            }
+
+                                        }
+                                    },
+                                    "errors":{
+                                            "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        },
+        "get":{
+            "tags": ["Kegiatan Page"],
+            "description": "Search Kegiatan",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "nagari_kunjungan",
+                    "in": "query"
+                },
+                {
+                    "name": "created_at",
+                    "in": "query"
+                }
+            ],
+            "responses": {
+                "200":{
+                    "description": "Success Search Kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                            },"size":{
+                                                "type": "string"
+                                            },
+
+                                            "page":{
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "errors":{
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/api/kegiatan/latest":{
+        "get":{
+            "tags": ["Kegiatan Page"],
+            "description": "Data Kegiatan Latest",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "query"
+                }
+            ],
+            "responses": {
+                "200":{
+                    "description": "Success Search Kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                            },
+                                            "size":{
+                                                "type": "string"
+                                            },
+
+                                            "page":{
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "errors":{
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    },
+    "/api/kegiatan/fillterbyDate":{
+        "get":{
+            "tags": ["Kegiatan Page"],
+            "description": "Fillter data kegiatan by date range",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "created_at",
+                    "in": "query"
+                }
+            ],
+            "responses": {
+                "200":{
+                    "description": "Success fillter by date Kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                            },
+                                            "size":{
+                                                "type": "string"
+                                            },
+
+                                            "page":{
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "errors":{
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    },
+    "/api/kegiatan/{id}":{
+        "put":{
+            "tags": ["Kegiatan Page"],
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path"
+                }
+            ],
+            "description": "Update Kegiatan",
+            "requestBody":{
+            "content": {
+                "application/json":{
+                    "schema":{
+                        "type": "object",
+                        "properties": {
+                            "nagari_kunjungan":{
+                                "type":"string"
+                            },
+                            "kegiatan":{
+                                "type":"string"
+                            },
+                            "hasil":{
+                                "type":"string"
+                            },
+                            "langkah":{
+                                "type":"string"
+                            },
+                            "rekomendasi":{
+                                "type":"string"
+                            },
+                            "created_at":{
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+            },
+            "responses": {
+                "200":{
+                    "description": "Success Update Kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                             },
+                                             "updated_at":{
+                                                "type": "string"
+                                             }
+                                    }
+                                },
+                                "errors":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+         },
+         "get":{
+            "tags": ["Kegiatan Page"],
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path"
+                }
+            ],
+            "description": "get kegiatan by id",
+            "responses": {
+                "200":{
+                    "description": "Success get kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "nagari_kunjungan":{
+                                                "type":"string"
+                                            },
+                                            "kegiatan":{
+                                                "type":"string"
+                                            },
+                                            "hasil":{
+                                                "type":"string"
+                                            },
+                                            "langkah":{
+                                                "type":"string"
+                                            },
+                                            "rekomendasi":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "errors":{
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+         },
+         "delete":{
+            "tags": ["Kegiatan Page"],
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path"
+                }
+            ],
+            "description": "Delete Kegiatan",
+            "responses": {
+                "200":{
+                    "description": "Success delete kegiatan",
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "errors":{
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+         }
+    }
+
+}
+}

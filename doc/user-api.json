@@ -1,0 +1,438 @@
+{
+    "openapi":"3.0.3",
+    "info":{
+        "title": "API Laporan Kegiatan",
+        "description": "User Api",
+        "version": "1.0",
+        "contact": {
+            "name": "Hanafis Gunawan",
+            "email": "hanafisg196@gmail.com"
+        },
+        "license": {
+            "name": "APACHE 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/users":{
+            "post":{
+                "tags": ["User Page"],
+            "description": "User Register",
+             "requestBody":{
+              "content": {
+                "application/json":{
+                    "example":{
+                       "username":        "nama",
+                       "password":        "nama saya",
+                       "nama":            "nama saya",
+                       "email":           "nama@gmail.com",
+                       "posisi":          "posisi saya",
+                       "jabatan":         "jabatan say",
+                       "kecamatan":       "kecamatan nya",
+                       "kabupaten_kota":  "kota nya",
+                       "provinsi":        "sumatera Barat"
+                    },
+                    "schema":{
+                        "type": "object",
+                        "required": [
+                            "username","password","nama","email"
+                        ],
+                        "properties": {
+                            "username" :{
+                                "type": "string"
+                            },
+                            "password":{
+                                "type": "string"
+                            },
+                            "nama":{
+                                "type": "string"
+                            },
+                            "email":{
+                                "type": "string"
+                            },
+                            "posisi":{
+                                "type": "string"
+                            },
+                            "jabatan":{
+                                "type": "string"
+                            },
+                            "kecamatan":{
+                                "type": "string"
+                            },
+                            "kabupaten_kota":{
+                                "type": "string"
+                            },
+                            "provinsi":{
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+
+              }
+
+             },"responses": {
+                "400":{
+                    "description": "Validation Error",
+                    "content": {
+                        "application/json":{
+                            "examples": {
+                                "validationError":{
+                                    "description": "",
+                                    "value":{
+                                        "errors":{
+                                            "username":[
+                                                "username must not be blank",
+                                                "username must min 6 character"
+                                            ],
+                                            "password":[
+                                                "password must not be blank",
+                                                "password must min 6 character"
+                                            ],
+                                            "name":[
+                                                "name must not be blank",
+                                                "name must min 6 character"
+                                            ],
+                                            "email":[
+                                                "username must not be blank",
+                                                "email must be a valid email "
+                                            ]
+                                        }
+                                    }
+                                }
+
+
+
+                            }
+                        }
+                    }
+
+                },
+                "201":{
+                    "description": "Success Register",
+                    "content": {
+                        "application/json":{
+                            "examples": {
+                                "Success":{
+                                    "value":{
+                                        "data":{
+                                            "id":1,
+                                            "nama":"Hanafis Gunawan",
+                                            "username":"hafisg15"
+                                        }
+                                    }
+                                }
+                            },
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "username":{
+                                                "type": "string"
+                                            },
+                                            "nama":{
+                                                "type": "string"
+                                            },
+                                            "email":{
+                                                "type": "string"
+                                            },
+                                            "posisi":{
+                                                "type": "string"
+                                            },
+                                            "jabatan":{
+                                                "type": "string"
+                                            },
+                                            "kecamatan":{
+                                                "type": "string"
+                                            },
+                                            "kabupaten_kota":{
+                                                "type": "string"
+                                            },
+                                            "provinsi":{
+                                                "type": "string"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+             }
+            }
+
+        },
+        "/api/users/login":{
+            "post":{
+                "tags": ["User Page"],
+                "description": "User Login",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "username":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success Login",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "properties": {
+                                      "data":{
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "username":{
+                                                "type": "string"
+                                            },
+                                            "nama":{
+                                                "type": "string"
+                                            },
+                                            "token":{
+                                                "type": "string"
+                                            }
+                                        }
+                                      },
+                                      "errors":{
+                                        "type": "object"
+                                      }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+        "/api/users/current":{
+
+            "get":{
+                "tags": ["User Page"],
+                "description": "Get current user",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Success get current user",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "properties": {
+                                        "data":{
+                                            "type": "object",
+                                            "properties": {
+                                                "id":{
+                                                    "type": "number"
+                                                },
+                                                "username":{
+                                                    "type": "string"
+                                                },
+                                                "name":{
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        },
+        "/api/users/current/update":{
+            "put":{
+            "tags": ["User Page"],
+            "description": "User Update",
+             "requestBody":{
+              "content": {
+                "application/json":{
+                    "example":{
+                       "username":        "usernamechange",
+                       "password":        "*********",
+                       "nama":            "namachange",
+                       "email":           "namachange@gmail.com",
+                       "posisi":          "posisichange",
+                       "jabatan":         "jabatanchange",
+                       "kecamatan":       "kecamatanchange",
+                       "kabupaten_kota":  "kotachange",
+                       "provinsi":        "provinsichange"
+                    },
+                    "schema":{
+                        "type": "object",
+                        "required": [
+                            "username","password","nama","email"
+                        ],
+                        "properties": {
+                            "username" :{
+                                "type": "string"
+                            },
+                            "password":{
+                                "type": "string"
+                            },
+                            "nama":{
+                                "type": "string"
+                            },
+                            "email":{
+                                "type": "string"
+                            },
+                            "posisi":{
+                                "type": "string"
+                            },
+                            "jabatan":{
+                                "type": "string"
+                            },
+                            "kecamatan":{
+                                "type": "string"
+                            },
+                            "kabupaten_kota":{
+                                "type": "string"
+                            },
+                            "provinsi":{
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+
+              }
+
+             },"responses": {
+                "400":{
+                    "description": "Validation Error",
+                    "content": {
+                        "application/json":{
+                            "examples": {
+                                "validationError":{
+                                    "description": "",
+                                    "value":{
+                                        "errors":{
+                                            "username":[
+                                                "username must not be blank",
+                                                "username must min 6 character"
+                                            ],
+                                            "password":[
+                                                "password must not be blank",
+                                                "password must min 6 character"
+                                            ],
+                                            "name":[
+                                                "name must not be blank",
+                                                "name must min 6 character"
+                                            ],
+                                            "email":[
+                                                "username must not be blank",
+                                                "email must be a valid email "
+                                            ]
+                                        }
+                                    }
+                                }
+
+
+
+                            }
+                        }
+                    }
+
+                },
+                "201":{
+                    "description": "Success Update",
+                    "content": {
+                        "application/json":{
+                            "examples": {
+                                "Success":{
+                                    "value":{
+                                        "data":{
+                                            "id":1,
+                                            "nama":"Hanafis Gunawan",
+                                            "username":"hafisg15"
+                                        }
+                                    }
+                                }
+                            },
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "data":{
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type": "number"
+                                            },
+                                            "username":{
+                                                "type": "string"
+                                            },
+                                            "nama":{
+                                                "type": "string"
+                                            },
+                                            "email":{
+                                                "type": "string"
+                                            },
+                                            "posisi":{
+                                                "type": "string"
+                                            },
+                                            "jabatan":{
+                                                "type": "string"
+                                            },
+                                            "kecamatan":{
+                                                "type": "string"
+                                            },
+                                            "kabupaten_kota":{
+                                                "type": "string"
+                                            },
+                                            "provinsi":{
+                                                "type": "string"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+             }
+            }
+        }
+
+    }
+}
