@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('kegiatans', function (Blueprint $table) {
             $table->id();
+            $table->string("nagari_kunjungan",100)->nullable(false);
+            $table->text("kegiatan")->nullable();
+            $table->text("hasil")->nullable();
+            $table->text("langkah")->nullable();
+            $table->text("rekomendasi")->nullable();
+            $table->unsignedBigInteger("user_id")->nullable(false);
             $table->timestamps();
+
+            $table->foreign("user_id")->on("users")->references("id");
+
+
         });
     }
 
