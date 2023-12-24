@@ -123,6 +123,55 @@ class UserTest extends TestCase
     }
 
 
+    public function testUpdateUserProfile(): void
+    {
+        $this->seed(UserSeeder::class);
+        $OldUser = User::where('username', 'test')->first();
+        $this->put('/api/users/current', [
+            'posisi' => 'pendamping desa'
+
+        ],[
+            'Authorization' => 'test'
+
+        ])->assertStatus(200)
+           ->assertJson ([
+                "data" => [
+                    'username' => 'test',
+                    'nama'   => 'test',
+
+                ]
+           ]);
+
+           $NewUser = User::where('username', 'test')->first();
+           self::assertNotEquals($OldUser->posisi, $NewUser->posisi);
+     }
+
+
+     public function testUpdateUserProfileFailed(): void
+     {
+         $this->seed(UserSeeder::class);
+         $this->put('/api/users/current', [
+             'posisi' => 'pendamping desa'
+
+         ],[
+             'Authorization' => 'asdsdasd'
+
+         ])->assertStatus(401)
+            ->assertJson ([
+                "errors" => [
+                    'message' => [
+                     'Unauthorization'
+                    ]
+
+                ]
+            ]);
+
+
+      }
+
+
+
+
 
 
 }

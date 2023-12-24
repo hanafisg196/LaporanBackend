@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -58,10 +59,29 @@ class UserApiController extends Controller
    }
 
 
-   public function get(Request $request):UserResource
+   public function get():UserResource
    {
     //get current user logged
     $user = Auth::user();
+    return new UserResource($user);
+   }
+
+
+   public function update(UserUpdateRequest $request): UserResource
+
+   {
+
+    $user = Auth::user();
+
+    //mastin juga pake id biar lebih aman aja
+    if ($user->id != $request->user()->id) {
+        return response()->json(['error' => 'Unauthorized'], 403);
+    }
+    $data = $request->validated();
+  /** @var \App\Models\User $user **/
+    // Perbarui informasi pengguna
+    $user->fill($data);
+    $user->save();
     return new UserResource($user);
    }
 }

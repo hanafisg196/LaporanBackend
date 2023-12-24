@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserRegisterRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user() != null;
     }
 
     /**
@@ -24,10 +24,6 @@ class UserRegisterRequest extends FormRequest
     {
         $maxLenght = 'max:100';
         return [
-            'username' => ['required', $maxLenght],
-            'password' => ['required', $maxLenght, 'min:6'] ,
-            'nama' => ['required', $maxLenght],
-            'email' => ['required', $maxLenght,'email'],
             'posisi' => ['nullable', $maxLenght],
             'jabatan' => ['nullable', $maxLenght],
             'kecamatan' => ['nullable', $maxLenght],
@@ -35,8 +31,6 @@ class UserRegisterRequest extends FormRequest
             'provinsi' => ['nullable', $maxLenght]
         ];
     }
-
-
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
         throw new HttpResponseException(response([
