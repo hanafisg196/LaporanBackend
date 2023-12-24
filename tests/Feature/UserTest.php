@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
+use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,15 +16,15 @@ class UserTest extends TestCase
     public function testRegisterSuccess(): void
     {
         $this->post('/api/users', [
-            'username' => 'test',
+            'username' => 'hafis15',
             'password'  => 'test123',
-            'nama'      => 'namasaya',
-            'email'      => 'test@gmail.com'
+            'nama'      => 'hafis',
+            'email'      => 'hafis@gmail.com'
         ])->assertStatus(201)
            ->assertJson ([
             "data"  => [
-                'username' => 'test',
-                'nama'     => 'test name'
+                'username' => 'hafis15',
+                'nama'     => 'hafis'
             ]
            ]);
     }
@@ -31,10 +33,10 @@ class UserTest extends TestCase
     public function testRegisterFailed(): void
     {
         $this->post('/api/users', [
-            'username' => 'test',
+            'username' => 'hafis15',
             'password'  => 'test123',
             'nama'      => '',
-            'email'      => 'test@gmail.com'
+            'email'      => 'hafis@gmail.com'
         ])->assertStatus(400)
            ->assertJson ([
             "errors"  => [
@@ -44,4 +46,83 @@ class UserTest extends TestCase
             ]
            ]);
     }
+
+    public function testLoginSuccess(): void
+    {
+        $this->seed(UserSeeder::class);
+        $this->post('/api/users/login', [
+            'username' => 'test',
+            'password'  => 'rahasia'
+        ])->assertStatus(200)
+           ->assertJson ([
+                "data" => [
+                    'username' => 'test',
+                    'nama' => 'test'
+                ]
+           ]);
+
+           $user = User::where('username', 'test')->first();
+           self::assertNotNull($user->token);
+    }
+
+
+    public function testLoginFailed(): void
+    {
+        $this->seed(UserSeeder::class);
+        $this->post('/api/users/login', [
+            'username' => 'tedsdst',
+            'password'  => 'rahasia'
+        ])->assertStatus(401)
+           ->assertJson ([
+                "errors" => [
+                    "message" => [
+                        "password or username is wrong"
+                    ]
+                ]
+           ]);
+
+    }
+    public function testGetCurrentUser(): void
+    {
+        $this->seed(UserSeeder::class);
+        $this->get('/api/users/current', [
+            'Authorization' => 'test'
+
+        ])->assertStatus(200)
+           ->assertJson ([
+                "data" => [
+                    'username' => 'test',
+                    'nama'   => 'test',
+
+                ]
+           ]);
+
+           $user = User::where('username', 'test')->first();
+           self::assertNotNull($user->token);
+    }
+
+
+    public function testGetUnthorzation(): void
+    {
+        $this->seed(UserSeeder::class);
+        $this->get('/api/users/current', [
+            'Authorzation' => 'dasdasdas'
+
+        ])->assertStatus(401)
+           ->assertJson ([
+                "errors" => [
+                    'message' => [
+                     'Unauthorization'
+                    ]
+
+                ]
+           ]);
+
+           $user = User::where('username', 'test')->first();
+           self::assertNotNull($user->token);
+    }
+
+
+
+
 }
