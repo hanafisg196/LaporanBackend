@@ -14,6 +14,10 @@ use App\Http\Controllers\FrontendController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+ });
+
 Route::resource('/kegiatan', FrontendController::class);
 Route::get('/ubah', [FrontendController::class, 'ubah']);
 

@@ -61,13 +61,11 @@
             <nav class="navbar header-navbar pcoded-header">
                <div class="navbar-wrapper">
                    <div class="navbar-logo">
-                     <div class="row ml-1">
-                        <div style="background-color:white" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <a href="/">
-                                <img style="width: 58px; height:58px; object-fit:contain" class="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
+                        <div class="row ml-1">
+                            <a href="index.html">
+                                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
                             </a>
                         </div>
-                     </div>
                    </div>
 
                    <div class="navbar-container container-fluid">
@@ -100,11 +98,6 @@
                                    <i class="ti-angle-down"></i> </a>
 
                                <ul class="show-notification profile-notification">
-                                @can('admin')
-                                <li>
-                                        <a href="/user" class="dropdown-item" style="margin-left: 19px"> <i class="ti-id-badge"></i> User </a>
-                                </li>
-                                @endcan
                                    <li>
                                        <form action="/logout" method="POST">
                                         @csrf
