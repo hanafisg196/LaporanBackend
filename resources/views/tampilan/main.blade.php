@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,8 +13,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
-      <meta name="keywords" content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+      <meta name="description"
+      content="Gradient Able Bootstrap admin template." />
+      <meta name="keywords" content="free dashboard template" />
       <meta name="author" content="codedthemes">
       <!-- Favicon icon -->
       <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
@@ -76,7 +77,9 @@
                    <div class="navbar-container container-fluid">
                        <ul class="nav-left">
                            <li>
-                               <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                               <div
+                               class="sidebar_toggle">
+                               <a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
                            </li>
                            <li>
                                <a href="#!" onclick="javascript:toggleFullScreen()">
@@ -132,7 +135,8 @@
     <!--[if lt IE 9]>
 <div class="ie-warning">
     <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>
+        to any of the following web browsers to access this website.</p>
     <div class="iew-container">
         <ul class="iew-download">
             <li>

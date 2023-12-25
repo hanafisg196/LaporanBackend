@@ -13,8 +13,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
-    <meta name="keywords" content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta
+    name="description"
+    content="Gradient Able Bootstrap admin template ." />
+    <meta
+    name="keywords"
+    content="free dashboard template" />
     <meta name="author" content="codedthemes">
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -70,7 +74,9 @@
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
                                                 <input type="checkbox" value="">
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="cr">
+                                                    <i class="cr-icon icofont icofont-ui-check txt-primary">
+                                                        </i></span>
                                                 <span class="text-inverse">Remember me</span>
                                             </label>
                                         </div>
@@ -78,7 +84,11 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign in</button>
+                                        <button
+                                        type="button"
+                                        class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
+                                            Sign in
+                                        </button>
                                     </div>
                                 </div>
                                 <hr/>

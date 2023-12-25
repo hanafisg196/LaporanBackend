@@ -14,6 +14,13 @@ class KegiatanResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'nagari_kunjungan' => $this->nagari_kunjungan,
+            'kegiatan' => $this->kegiatan,
+            'hasil' => $this->hasil,
+            'langkah' => $this->langkah,
+            'rekomendasi' => $this->rekomendasi,
+        ];
     }
 }

@@ -73,7 +73,7 @@ class UserApiController extends Controller
 
     $user = Auth::user();
 
-    //mastin juga pake id biar lebih aman aja
+    //mastiin juga pake id biar lebih aman aja
     if ($user->id != $request->user()->id) {
         return response()->json(['error' => 'Unauthorized'], 403);
     }
@@ -83,5 +83,19 @@ class UserApiController extends Controller
     $user->fill($data);
     $user->save();
     return new UserResource($user);
+   }
+
+   public function logout()
+   {
+    /** @var \App\Models\User $user **/
+    $user = Auth::user();
+    //set token null
+    $user->token = null;
+    $user->save();
+
+    return response()->json([
+        "data" => true
+    ])->setStatusCode(200);
+
    }
 }

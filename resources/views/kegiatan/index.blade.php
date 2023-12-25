@@ -21,15 +21,16 @@
     <div class="card-block table-border-style">
         <div class="table-responsive">
             <table class="table">
+                <caption>Data Kunjungan</caption>
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nagari Kunjungan</th>
-                        <th>Kegiatan</th>
-                        <th>Hasil</th>
-                        <th>Langkah</th>
-                        <th>Rekomendasi</th>
-                        <th>Aksi</th>
+                        <th id="columNo">No</th>
+                        <th id="columnNagari">Nagari Kunjungan</th>
+                        <th id="columnKegiatan">Kegiatan</th>
+                        <th id="columnHasil">Hasil</th>
+                        <th id="columnLangkah">Langkah</th>
+                        <th id="columnRekomendasi">Rekomendasi</th>
+                        <th id="columnAksi">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +46,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
@@ -62,7 +65,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
@@ -79,7 +84,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
@@ -96,7 +103,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
@@ -113,7 +122,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
@@ -130,7 +141,9 @@
                             <form action="#" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="ti-trash btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">
+                                <button
+                                class="ti-trash btn btn-danger"
+                                onclick="return confirm('Yakin Menghapus Data?')">
                                 </button>
                             </form>
                         </td>
