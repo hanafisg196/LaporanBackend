@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\KegiatanApiController;
 use App\Http\Controllers\UserApiController;
 use App\Http\Middleware\ApiAuthMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Tests\Feature\KegiatanApiTest;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,11 @@ Route::post('/users/login', [UserApiController::class, 'login']);
 
 Route::middleware(ApiAuthMiddleware::class)->group(function (){
 Route::get('/users/current', [UserApiController::class, 'get']);
-Route::put('/users/current/', [UserApiController::class, 'update']);
+Route::put('/users/current/profile', [UserApiController::class, 'update']);
+Route::delete('/users/current/logout', [UserApiController::class, 'logout']);
+
+
+Route::post('/kegiatan', [KegiatanApiController::class, 'create']);
+
+
 });

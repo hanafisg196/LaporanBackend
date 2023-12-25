@@ -82,7 +82,9 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Tambahkan</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                    Tambahkan
+                                </button>
                             </div>
 
                     </div>

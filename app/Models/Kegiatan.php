@@ -19,7 +19,6 @@ class Kegiatan extends Model
     'kegiatan',
     'hasil',
     'langkah',
-    'posisi',
     'rekomendasi'
    ];
 

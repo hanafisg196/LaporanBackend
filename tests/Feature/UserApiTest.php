@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class UserTest extends TestCase
+class UserApiTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -127,7 +127,7 @@ class UserTest extends TestCase
     {
         $this->seed(UserSeeder::class);
         $OldUser = User::where('username', 'test')->first();
-        $this->put('/api/users/current', [
+        $this->put('/api/users/current/profile', [
             'posisi' => 'pendamping desa'
 
         ],[
@@ -150,7 +150,7 @@ class UserTest extends TestCase
      public function testUpdateUserProfileFailed(): void
      {
          $this->seed(UserSeeder::class);
-         $this->put('/api/users/current', [
+         $this->put('/api/users/current/profile', [
              'posisi' => 'pendamping desa'
 
          ],[
@@ -168,6 +168,23 @@ class UserTest extends TestCase
 
 
       }
+
+
+      public function testLogout(): void
+      {
+          $this->seed(UserSeeder::class);
+          $this->delete(uri:'/api/users/current/logout',headers:[
+              'Authorization' => 'test'
+
+          ])->assertStatus(200)
+             ->assertJson ([
+                 "data" => [
+                        true
+                 ]
+             ]);
+
+
+       }
 
 
 
