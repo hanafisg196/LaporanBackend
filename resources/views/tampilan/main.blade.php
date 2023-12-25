@@ -63,7 +63,7 @@
                    <div class="navbar-logo">
                         <div class="row ml-1">
                             <a href="index.html">
-                                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+                                <img class="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
                             </a>
                         </div>
                    </div>

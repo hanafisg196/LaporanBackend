@@ -17,6 +17,9 @@ use App\Http\Controllers\FrontendController;
 Route::get('/', function () {
     return view('welcome');
  });
+ Route::get('/login', function () {
+    return view('login.index');
+ });
 
 Route::resource('/kegiatan', FrontendController::class);
 Route::get('/ubah', [FrontendController::class, 'ubah']);
