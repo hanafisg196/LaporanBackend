@@ -16,13 +16,15 @@ class KegiatanSeeder extends Seeder
     {
         $user = User::where('username', 'test')->first();
 
-        for($i=0; $i < 20; $i++){
+        for($i=0; $i < 600; $i++){
             Kegiatan::create([
-                'nagari_kunjungan'  => 'kontol'.$i,
-                'kegiatan'          =>  'test'.$i,
-                'hasil'             =>  'test'.$i,
-                'langkah'           =>  'test'.$i,
-                'rekomendasi'       =>  'test'.$i,
+                'nagari_kunjungan'  => 'Halaban'.$i,
+                'kegiatan'          =>  'Pendampingan
+                                         Pembinaan bersama adm inspektorat'.$i,
+                'hasil'             =>  'Pendampingan
+                                         Pembinaan bersama adm inspektora'.$i,
+                'langkah'           =>  'Pembinaan bersama adm inspektorat'.$i,
+                'rekomendasi'       =>  'Pembinaan bersama adm inspektora'.$i,
                 'user_id'       =>  $user->id
 
             ]);

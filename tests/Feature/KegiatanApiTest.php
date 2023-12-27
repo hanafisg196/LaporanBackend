@@ -133,7 +133,7 @@ class KegiatanApiTest extends TestCase
     {
        $this->seed([UserSeeder::class,KegiatanSeeder::class]);
 
-       $response = $this->get('/api/kegiatan/search?nagari=kontol',
+       $response = $this->get('/api/kegiatan/search?nagari=Halaban',
        [
         'Authorization' => 'test'
        ])->assertStatus(200)->json();

@@ -6,7 +6,7 @@
             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="{{ request()->segment(1)=='kegiatan'? 'active' : '' }}">
-                    <a href="/kegiatan">
+                    <a href="/dashboard/listkegiatan">
                         <span class="pcoded-micon"><i class="ti-agenda"></i></i></span>
                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Kegiatan</span>
                         <span class="pcoded-mcaret"></span>

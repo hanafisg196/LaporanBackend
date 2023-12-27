@@ -27,10 +27,11 @@ Route::post('/login', [AdminController::class, 'doLogin']);
 
 Route::middleware(AdminMiddleware::class)->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/listkegiatan', [DashboardController::class, 'getData']);
+    Route::post('/logout', [AdminController::class, 'Logout']);
 });
 
 
-Route::resource('/kegiatan', FrontendController::class);
-Route::get('/ubah', [FrontendController::class, 'ubah']);
+
 
 

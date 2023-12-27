@@ -48,6 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
+
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
                         <form class="md-float-material" method="POST" action="/login">
@@ -63,13 +64,15 @@
                                 </div>
                                 <hr/>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
-
+                                    <input type="text" class="form-control"
+                                    placeholder="Username" name="username">
                                     <span class="md-line"></span>
+
 
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                                    <input type="password" class="form-control"
+                                     placeholder="Password" name="password">
 
                                     <span class="md-line"></span>
 
@@ -97,8 +100,22 @@
                                     </div>
                                 </div>
                                 <hr/>
-
-
+                                @if (isset($error))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{$error}}</strong>
+                                    <button
+                                    type="button" data-dismiss="alert"
+                                     class="ti-close btn btn-danger btn-sm ">
+                                    </button>
+                                  </div>
+                                  @endif
+                                  <script>
+                                    $(document).ready(function() {
+                                        $(".close").on("click", function() {
+                                            $("#myAlert").alert('close');
+                                        });
+                                    });
+                                </script>
                             </div>
                         </form>
                         <!-- end of form -->

@@ -24,12 +24,15 @@ class UserSeeder extends Seeder
 
 
         User::create([
-            'username' => 'test2',
-            'password' => Hash::make('rahasia'),
+            'username' => 'hafis',
+            'password' => Hash::make('123456'),
             'nama' => 'test2',
             'email' => 'test2@gmail',
             'token'=> 'test2',
+            'role'=> 'admin',
+
         ]);
+
 
 
     }

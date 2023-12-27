@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\AdminServices;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -20,7 +21,7 @@ class AdminController extends Controller
         return response()->view('login.index');
    }
 
-   public function doLogin(Request $request)
+   public function doLogin(Request $request): Response|RedirectResponse
    {
         $username = $request->input('username');
         $password = $request->input('password');
@@ -29,12 +30,7 @@ class AdminController extends Controller
         {
             return response()->view("login.index",
             [
-                "error" => [
-                        "message"=> [
-                             "username" => "username is required",
-                             "password" => "username is required",
-                        ]
-                ]
+                "error" => "User and Password is Required"
             ]);
         }
 
@@ -45,13 +41,19 @@ class AdminController extends Controller
         }
 
         return response()->view("login.index",[
-            "error" => [
-                "username" => "username is wrong",
-                "password" => "username is wrong",
-            ]
+            "error" => "Username or password not valid"
            ]);
 
 
 
    }
+
+
+   public function Logout(Request $request): RedirectResponse
+   {
+    $request->session()->forget('admin');
+    return redirect('/');
+   }
+
+
 }

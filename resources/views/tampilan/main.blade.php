@@ -97,7 +97,7 @@
 
                                <ul class="show-notification profile-notification">
                                    <li>
-                                       <form action="/logout" method="POST">
+                                       <form action="/logout" method="post">
                                         @csrf
                                         <button type="submit" class="dropdown-item">
                                             <i class="ti-layout-sidebar-left"></i> Logout</button>
