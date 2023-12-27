@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserApiController extends Controller
 {
+
+    private function getAuthUser():User
+    {
+        return Auth::user();
+    }
    public function register(UserRegisterRequest $request):JsonResponse
 
    {
@@ -59,27 +64,26 @@ class UserApiController extends Controller
    }
 
 
-   public function get():UserResource
+   public function getCurrentUser():UserResource
    {
     //get current user logged
-    $user = Auth::user();
+    $user = $this->getAuthuser();
     return new UserResource($user);
    }
 
 
-   public function update(UserUpdateRequest $request): UserResource
+   public function updateProfile(UserUpdateRequest $request): UserResource
 
    {
 
-    $user = Auth::user();
+    $user = $this->getAuthuser();
 
     //mastiin juga pake id biar lebih aman aja
     if ($user->id != $request->user()->id) {
         return response()->json(['error' => 'Unauthorized'], 403);
     }
     $data = $request->validated();
-  /** @var \App\Models\User $user **/
-    // Perbarui informasi pengguna
+    $user = $this->getAuthuser();
     $user->fill($data);
     $user->save();
     return new UserResource($user);
@@ -87,8 +91,8 @@ class UserApiController extends Controller
 
    public function logout()
    {
-    /** @var \App\Models\User $user **/
-    $user = Auth::user();
+
+    $user = $this->getAuthuser();
     //set token null
     $user->token = null;
     $user->save();

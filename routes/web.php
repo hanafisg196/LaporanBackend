@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
+use App\Http\Middleware\AdminMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +18,19 @@ use App\Http\Controllers\FrontendController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
- });
- Route::get('/login', function () {
-    return view('login.index');
- });
+
+
+Route::get('/',[HomeController::class,'Home']);
+Route::get('/login', [AdminController::class, 'Login']);
+Route::post('/login', [AdminController::class, 'doLogin']);
+
+
+Route::middleware(AdminMiddleware::class)->group(function (){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
 
 Route::resource('/kegiatan', FrontendController::class);
 Route::get('/ubah', [FrontendController::class, 'ubah']);
+
 

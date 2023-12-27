@@ -50,7 +50,8 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form class="md-float-material">
+                        <form class="md-float-material" method="POST" action="/login">
+                            @csrf
                             <div class="text-center">
                                 <img src="assets/images/logo.png" alt="logo.png">
                             </div>
@@ -62,12 +63,16 @@
                                 </div>
                                 <hr/>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Masukkan Username">
+                                    <input type="text" class="form-control" placeholder="Username" name="username">
+
                                     <span class="md-line"></span>
+
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control" placeholder="Password" name="password">
+
                                     <span class="md-line"></span>
+
                                 </div>
                                 <div class="row m-t-25 text-left">
                                     <div class="col-sm-7 col-xs-12">
@@ -85,7 +90,7 @@
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <button
-                                        type="button"
+                                        type="submit"
                                         class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
                                             Sign in
                                         </button>

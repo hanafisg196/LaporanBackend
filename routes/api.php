@@ -21,12 +21,18 @@ Route::post('/users', [UserApiController::class, 'register']);
 Route::post('/users/login', [UserApiController::class, 'login']);
 
 Route::middleware(ApiAuthMiddleware::class)->group(function (){
-Route::get('/users/current', [UserApiController::class, 'get']);
-Route::put('/users/current/profile', [UserApiController::class, 'update']);
+Route::get('/users/current', [UserApiController::class, 'getCurrentUser']);
+Route::put('/users/current/profile', [UserApiController::class, 'updateProfile']);
 Route::delete('/users/current/logout', [UserApiController::class, 'logout']);
 
 
 Route::post('/kegiatan', [KegiatanApiController::class, 'create']);
+Route::get('/kegiatan/search', [KegiatanApiController::class, 'search']);
+Route::get('/kegiatan/latest', [KegiatanApiController::class, 'latest']);
+Route::get('/kegiatan/filterBydate', [KegiatanApiController::class, 'filterBydate']);
+
+Route::put('/kegiatan/{id}', [KegiatanApiController::class, 'update'])->where('id', '[0-9]+');
+Route::delete('/kegiatan/{id}', [KegiatanApiController::class, 'remove'])->where('id', '[0-9]+');
 
 
 });
