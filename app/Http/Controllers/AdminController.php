@@ -30,7 +30,7 @@ class AdminController extends Controller
         {
             return response()->view("login.index",
             [
-                "error" => "User and Password is Required"
+                "error" => "Username and Password is Required"
             ]);
         }
 
