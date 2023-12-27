@@ -18,7 +18,7 @@
       <meta name="keywords" content="free dashboard template" />
       <meta name="author" content="codedthemes">
       <!-- Favicon icon -->
-      <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+      <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
       <!-- Google font-->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
       <!-- Required Fremwork -->
@@ -62,21 +62,16 @@
             <nav class="navbar header-navbar pcoded-header">
                <div class="navbar-wrapper">
                    <div class="navbar-logo">
-                        <div class="row ml-1">
-                            <a href="index.html">
-                                <img class="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
-                            </a>
-                        </div>
-                   </div>
 
-                   <div class="navbar-container container-fluid">
-                        <ul class="nav-left">
-                                <li>
-                                    <a class="mobile-menu" id="mobile-collapse" href="#!">
-                                        <i class="ti-menu"></i>
-                                    </a>
-                                </li>
-                        </ul>
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="ti-menu"></i>
+                        </a>
+                        <a href="index.html">
+                            <img class="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
+                        </a>
+                        <a class="mobile-options">
+                            <i class="ti-more"></i>
+                        </a>
                    </div>
 
                    <div class="navbar-container container-fluid">
