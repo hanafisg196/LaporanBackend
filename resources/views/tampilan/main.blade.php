@@ -32,17 +32,14 @@
       <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
       <!-- trix editor -->
-      <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+      <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 
-
-      <script type="text/javascript" src="/assets/js/trix.js"></script>
-        <style>
-
-            trix-toolbar [data-trix-button-group="file-tools"]{
-                display: none;
-            }
-
-        </style>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+    </style>
 
   </head>
 

@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserWebController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KegiatanWebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,10 @@ Route::post('/login', [AdminController::class, 'doLogin']);
 
 Route::middleware(AdminMiddleware::class)->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/dashboard/listkegiatan', [DashboardController::class, 'getData']);
+    //Route::get('/dashboard/listkegiatan', [DashboardController::class, 'getData']);
     Route::post('/logout', [AdminController::class, 'Logout']);
+    Route::resource('/kegiatan', KegiatanWebController::class);
+    Route::resource('/user', UserWebController::class);
 });
 
 
