@@ -154,7 +154,7 @@ class UserApiTest extends TestCase
              'posisi' => 'pendamping desa'
 
          ],[
-             'Authorization' => 'asdsdasd'
+             'Authorization' => 'asdsdas'
 
          ])->assertStatus(401)
             ->assertJson ([
