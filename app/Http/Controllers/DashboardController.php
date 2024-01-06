@@ -14,7 +14,7 @@ class DashboardController extends Controller
     }
         public function index()
         {
-                return response()->view("kegiatan.index");
+                return response()->view("kegiatan.dashboard");
         }
 
         public function getData()

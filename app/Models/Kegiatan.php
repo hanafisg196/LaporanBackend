@@ -19,6 +19,7 @@ class Kegiatan extends Model
     'kegiatan',
     'hasil',
     'langkah',
+    'user_id',
     'rekomendasi'
    ];
 

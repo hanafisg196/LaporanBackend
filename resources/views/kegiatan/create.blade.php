@@ -27,16 +27,17 @@
                 <div class="card-header">
                     <h5>Tambahkan Kegiatan</h5>
                 </div>
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="/kegiatan" enctype="multipart/form-data">
                     @csrf
                     <div class="card-block">
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nagari Kunjungan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('#') is-invalid @enderror" required>
+                                    <input type="text" id="nagari_kunjungan" name="nagari_kunjungan" class="form-control @error('nagari_kunjungan') is-invalid @enderror"
+                                     value="{{ old('nagari_kunjungan') }}" required>
 
-                                    @error('#')
+                                    @error('nagari_kunjungan')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -48,48 +49,40 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Kegiatan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('#') is-invalid @enderror">
-                                    @error('#')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                    <input id="kegiatan" type="hidden" value="{{ old('kegiatan') }}"  name="kegiatan">
+                                    <trix-editor input="kegiatan"></trix-editor>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Hasil</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" cols="5" class="form-control"
-                                    placeholder="Default textarea"></textarea>
+                                    <input id="hasil" type="hidden" value="{{ old('hasil') }}" name="hasil">
+                                    <trix-editor input="hasil"></trix-editor>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Langkah</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" cols="5" class="form-control"
-                                    placeholder="Default textarea"></textarea>
+                                    <input id="langkah" type="hidden" value="{{ old('langkah') }}" name="langkah">
+                                    <trix-editor input="langkah"></trix-editor>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Rekomendasi</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" cols="5" class="form-control"
-                                    placeholder="Default textarea"></textarea>
+                                    <input id="rekomendasi" type="hidden" value="{{ old('rekomendasi') }}" name="rekomendasi">
+                                    <trix-editor input="rekomendasi"></trix-editor>
                                 </div>
                             </div>
-
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                    Tambahkan
-                                </button>
-                            </div>
-
-                    </div>
+                        <div class="m-1">
+                            <a href="/kegiatan" class="btn waves-effect waves-light btn-secondary">Kembali</a>
+                            <button type="submit" class="btn btn-primary">Tambahkan</button>
+                        </div>
+                        </div>
                 </form>
-            </div>
             <!-- Basic Form Inputs card end -->
         </div>
     </div>
